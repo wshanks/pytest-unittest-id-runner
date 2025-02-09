@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytest-unittest-id-runner"
+description = "A pytest plugin to run tests using unittest-style test IDs"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+classifiers = [
+    "Framework :: Pytest",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "pytest>=6.0.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/wshanks/pytest-unittest-id-runner"
+"Bug Tracker" = "https://github.com/wshanks/pytest-unittest-id-runner/issues"
+
+[tool.hatch.version]
+source = "vcs"
+
+[project.entry-points.pytest11]
+unittest_id_runner = "pytest_unittest_id_runner"
+
+[tool.pytest.ini_options]
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+pytest-unittest-id-runner = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+
+[tool.pixi.feature.dev.dependencies]
+pudb = "*"
+
+[tool.pixi.feature.dev.tasks]
+pytestdb = "pytest --pdb --pdbcls=pudb.debugger:Debugger"
+
+[tool.pixi.environments]
+dev = ["dev"]
