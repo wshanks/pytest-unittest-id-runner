@@ -21,5 +21,7 @@ Once installed, the plugin automatically attempts to perform the test identifier
 
 This plugin fills a fairly specific niche.
 There are some projects out there that use unittest for testing instead of pytest, but they use unittest in a straightforward way, so that pytest can run the tests with its unittest compatibility support.
-When working on such a project, one may find that the tests are run in CI with unittest and the failures are printed in the unittest style.
-With this plugin installed, one simply copy and paste the unittest identifiers onto a pytest command line in order to debug the tests locally and not worry about converting between unittest and pytest styles of test identifier.
+When working on such a project, one may prefer to work with the tests locally using pytest.
+One motivation for doing this could be using a particular pytest feature or plugin for debugging test failures, since the pytest ecosystem is much bigger than unittest's.
+In this case, one will find that the tests are run in CI with unittest and the failures are printed in the unittest style.
+With `pytest-unittest-id-runner` installed, one can simply copy and paste the unittest identifiers from the CI output onto a pytest command line in order to debug the tests locally and not worry about converting between unittest and pytest styles of test identifier.
