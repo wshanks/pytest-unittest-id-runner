@@ -30,9 +30,7 @@ jobs:
       with:
         enable-cache: true
         cache-suffix: "optional-suffix"
-    - name: Install dependencies
-      run: |
-        uv pip install . pytest
+    - name: Lint with pre-commit
+      run: uvx pre-commit run --all-files
     - name: Test with pytest
-      run: |
-        pytest
+      run: uv run pytest
